@@ -72,8 +72,16 @@ def makeweights(cloud):
 clod1=makeweights(cloud1)
 clod2=makeweights(cloud2)
 
-print cloud1
-print cloud2
+#print cloud1
+#print cloud2
+
+def printtoexcel(cloud):
+    for item in cloud:
+        print item[0]+"\t"+str(item[1])+"\t"+str(item[2])+"\t"+str(item[3])
+    print ""
+
+printtoexcel(cloud1)
+printtoexcel(cloud2)
 
 
 
