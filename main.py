@@ -37,16 +37,43 @@ cloud2=makecloud(words[1])
 
 def makeranks(cloud):
     l = len(cloud)
-    i=0
+    p = 0
+    rank=1
+    cloud[0].append(rank)
+    i=1
+    c=1
+    count=1
     while i<l:
-        cloud[i].append(i+1)
+        c=i
+        #position 1 is frequency
+        if cloud[p][1] <> cloud[c][1]:
+            p = c
+            rank+=count
+            count=1
+        else:
+            count+=1
+        cloud[i].append(rank)
         i+=1
     return cloud
 
 cloud1=makeranks(cloud1)
 cloud2=makeranks(cloud2)
 
+l1=len(words[0])
+l2=len(words[1])
+def makeweights(cloud):
+    i=0
+    l=len(cloud)
+    while i<l:
+        cloud[i].append(round(100.0*cloud[i][1]/l,2))
+        i+=1
+    return cloud
+
+clod1=makeweights(cloud1)
+clod2=makeweights(cloud2)
+
 print cloud1
 print cloud2
+
 
 
