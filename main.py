@@ -12,6 +12,10 @@ for line in f:
         words[pool] += line.split(' ')
 words[0].sort()
 words[1].sort()
-print words[0]
-print words[1]
+
+import collections
+counter1=collections.Counter(words[0])
+counter2=collections.Counter(words[1])
+print counter1
+print counter2
 
