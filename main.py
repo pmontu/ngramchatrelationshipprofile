@@ -12,10 +12,23 @@ for line in f:
         words[pool] += line.split(' ')
 words[0].sort()
 words[1].sort()
+#print words[0]
+#print words[1]
 
-import collections
-counter1=collections.Counter(words[0])
-counter2=collections.Counter(words[1])
-print counter1
-print counter2
+previous = words[0][0]
+c=1
+i=1
+l=len(words[0])
+cloud = []
+while i<l:
+    current = words[0][i]
+    if previous == current:
+        c+=1
+    else:
+        cloud.append([previous,c])
+        c=1
+        previous = current
+    i+=1
+print cloud
+
 
