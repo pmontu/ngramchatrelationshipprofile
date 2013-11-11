@@ -66,27 +66,16 @@ cloud2=makeranks(cloud2)
 #print cloud1
 #print cloud2
 
-#NGRAM WITH RANK and WEIGHT(SAME AS RANK=COUNT/TOTAL WORDS)
-def makeweights(cloud,l):
-    i=0
-    L=len(cloud)
-    while i<L:
-        cloud[i].append(round(100.0*cloud[i][1]/l,2))
-        i+=1
-    return cloud
-
-cloud1=makeweights(cloud1,len(words[0]))
-cloud2=makeweights(cloud2,len(words[1]))
-print cloud1
-print cloud2
-
+#CHECKING THE HISTOGRAM ON RANKS FOR DISTRIBUTION
 def printtoexcel(cloud):
     for item in cloud:
-        print item[0]+"\t"+str(item[1])+"\t"+str(item[2])+"\t"+str(item[3])
+        print item[0]+"\t"+str(item[1])+"\t"+str(item[2])
     print ""
 
 #printtoexcel(cloud1)
 #printtoexcel(cloud2)
+
+
 
 
 
