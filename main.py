@@ -1,3 +1,4 @@
+#Splitting facebook chat conversation to two sets of tokens
 f = open('input00.txt','r')
 name1 = "Mohan Kumar D"
 name2 = "Manoj Kumar P"
@@ -15,6 +16,7 @@ words[1].sort()
 #print words[0]
 #print words[1]
 
+#NGRAM
 def makecloud(words):
     previous = words[0]
     c=1
@@ -34,7 +36,10 @@ def makecloud(words):
 
 cloud1=makecloud(words[0])
 cloud2=makecloud(words[1])
+#print cloud1
+#print cloud2
 
+#NGRAM WITH RANKS
 def makeranks(cloud):
     l = len(cloud)
     p = 0
@@ -58,30 +63,30 @@ def makeranks(cloud):
 
 cloud1=makeranks(cloud1)
 cloud2=makeranks(cloud2)
+#print cloud1
+#print cloud2
 
-l1=len(words[0])
-l2=len(words[1])
-def makeweights(cloud):
+#NGRAM WITH RANK and WEIGHT(SAME AS RANK=COUNT/TOTAL WORDS)
+def makeweights(cloud,l):
     i=0
-    l=len(cloud)
-    while i<l:
+    L=len(cloud)
+    while i<L:
         cloud[i].append(round(100.0*cloud[i][1]/l,2))
         i+=1
     return cloud
 
-clod1=makeweights(cloud1)
-clod2=makeweights(cloud2)
-
-#print cloud1
-#print cloud2
+cloud1=makeweights(cloud1,len(words[0]))
+cloud2=makeweights(cloud2,len(words[1]))
+print cloud1
+print cloud2
 
 def printtoexcel(cloud):
     for item in cloud:
         print item[0]+"\t"+str(item[1])+"\t"+str(item[2])+"\t"+str(item[3])
     print ""
 
-printtoexcel(cloud1)
-printtoexcel(cloud2)
+#printtoexcel(cloud1)
+#printtoexcel(cloud2)
 
 
 
